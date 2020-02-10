@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
     {
@@ -9,7 +10,8 @@ const routes: Routes = [
     },
     {
         path: 'app',
-        loadChildren: () => import('./content/content.module').then(m => m.ContentModule)
+        loadChildren: () => import('./content/content.module').then(m => m.ContentModule),
+        canActivate: [AuthGuard]
     },
     { path: "", redirectTo: "/login", pathMatch: "full" }
 ];

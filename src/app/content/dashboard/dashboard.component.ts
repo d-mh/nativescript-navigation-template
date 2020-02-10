@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { Store } from '@ngxs/store';
+import { Logout } from '../../shared/state/auth.actions';
 
 @Component({
   selector: 'ns-dashboard',
@@ -10,9 +10,8 @@ import { RouterExtensions } from 'nativescript-angular/router';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(
-    private activeRoute: ActivatedRoute,
-    private routerExtension: RouterExtensions) {
-  }
+    private store: Store,
+  ) { }
 
   ngOnInit() {
     console.log('[DashboardComponent] ngOnInit()');
@@ -22,15 +21,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log('[DashboardComponent] ngOnDestroy()');
   }
 
-  navigateToLogin() {
-    this.routerExtension.navigate(
-      ['/login'],
-      {
-        clearHistory: true,
-        relativeTo: this.activeRoute.root,
-        animated: true,
-        transition: { name: 'slideRight' }
-      });
+  logout() {
+    console.log('logout()')
+
+    this.store.dispatch(new Logout());
   }
 
 }

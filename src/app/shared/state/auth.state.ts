@@ -26,7 +26,9 @@ export class AuthState {
         return !!state.token;
     }
 
-    constructor(private authService: AuthService) { }
+    constructor(
+        private authService: AuthService,
+    ) { }
 
     @Action(Login)
     login(ctx: StateContext<AuthStateModel>, action: Login) {

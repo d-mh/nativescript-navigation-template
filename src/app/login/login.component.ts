@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { Store } from '@ngxs/store';
+import { Login } from '../shared/state/auth.actions';
 
 @Component({
   selector: 'ns-login',
@@ -10,9 +10,8 @@ import { RouterExtensions } from 'nativescript-angular/router';
 export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
-    private activeRoute: ActivatedRoute,
-    private routerExtension: RouterExtensions) {
-  }
+    private store: Store,
+  ) { }
 
   ngOnInit() {
     console.log('[LoginComponent] ngOnInit()');
@@ -22,16 +21,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log('[LoginComponent] ngOnDestroy()');
   }
 
-  navigateToApp() {
-    console.log('navigateToApp()');
-    this.routerExtension.navigate(
-      ['/app/content'],
-      {
-        clearHistory: true,
-        relativeTo: this.activeRoute,
-        animated: true,
-        transition: { name: 'slideLeft' }
-      });
+  login() {
+    console.log('login()');
+
+    const payload: { username: string; password: string; } = { username: 'admin', password: 'password' };
+    this.store.dispatch(new Login(payload));
   }
 
 }

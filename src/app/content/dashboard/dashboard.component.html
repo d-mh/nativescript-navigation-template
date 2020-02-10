@@ -1,13 +1,14 @@
 <ActionBar title="Dashboard" class="action-bar">
 </ActionBar>
 
-<GridLayout rows="*, auto, auto" class="page">
+<GridLayout rows="*, auto" class="page">
     <Label row="0" text="Dashboard Page" class="h2 text-center m-y-auto"></Label>
 
-    <Button row="1" text="Navigate To Login (via nsRouterLink)" class="m-y-auto btn btn-primary"
+    <!-- <Button row="1" text="Navigate To Login (via nsRouterLink)" class="m-y-auto btn btn-primary"
         [nsRouterLink]="['/login']" pageTransition="slideRight" clearHistory="true">
     </Button>
-
     <Button row="2" text="Navigate To Login (via RouterExtensions)" class="m-y-auto btn btn-primary"
-        (tap)="navigateToLogin()"></Button>
+        (tap)="navigateToLogin()"></Button> -->
+    <Button row="1" class="-primary" text="Logout" (tap)="logout()"></Button>
+    
 </GridLayout>
