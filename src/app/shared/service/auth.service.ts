@@ -8,9 +8,16 @@ export class AuthService {
 
   constructor() { }
 
-  login(payload: any): Observable<{ token: string }> {
+  login(payload: { username: string, password: string }): Observable<{ token: string }> {
 
-    return of({ token: 'token here' });
+    if (payload.username === 'admin' && payload.password === 'password') {
+
+      return of({ token: 'token here' });
+    } else {
+      
+      return of({ token: null });
+    }
+
   }
 
   logout(token: string): Observable<any> {

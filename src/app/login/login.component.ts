@@ -28,4 +28,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.store.dispatch(new Login(payload));
   }
 
+  loginWrongCreds() {
+    console.log('loginWrongCreds()');
+
+    const payload: { username: string; password: string; } = { username: 'admin', password: 'wrongPassword' };
+    this.store.dispatch(new Login(payload));
+  }
+
 }

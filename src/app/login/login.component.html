@@ -1,9 +1,10 @@
-<GridLayout rows="*, auto" class="page">
+<GridLayout rows="*, auto, auto" class="page">
     <Label row="0" text="Login Page" class="h2 text-center m-y-auto"></Label>
 
     <!-- <Button row="1" class="-outline" text="Navigate To App (via nsRouterLink)" [nsRouterLink]="['/app/content']"
         pageTransition="slideLeft" clearHistory="true"></Button>
     <Button row="2" class="-primary" text="Navigate To App (via RouterExtensions)" (tap)="navigateToApp()"></Button> -->
     <Button row="1" class="-primary" text="Login" (tap)="login()"></Button>
+    <Button row="2" class="-outline" text="Login wrong creds" (tap)="loginWrongCreds()"></Button>
 
 </GridLayout>

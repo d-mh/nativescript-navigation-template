@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA, APP_INITIALIZER } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -7,6 +7,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AuthState } from './shared/state/auth.state';
 import { Logger } from './shared/state/logger';
+import { RouteHandler } from './shared/handler/route.handler';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -16,6 +17,10 @@ import { Logger } from './shared/state/logger';
 
 const mode = (<any>global).config.mode;
 const isProduction = mode === 'production';
+
+export function emptyFn() {
+    return () => { }
+}
 
 @NgModule({
     bootstrap: [
@@ -30,7 +35,14 @@ const isProduction = mode === 'production';
     declarations: [
         AppComponent,
     ],
-    providers: [],
+    providers: [
+        {
+            provide: APP_INITIALIZER,
+            useFactory: emptyFn,
+            deps: [RouteHandler],
+            multi: true
+        }
+    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
