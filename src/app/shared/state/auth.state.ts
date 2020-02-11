@@ -1,8 +1,8 @@
 import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { Login, Logout } from './auth.actions';
+import { Login, Logout, Authenticate } from './auth.actions';
 import { AuthService } from '../service/auth.service';
 import { tap, catchError } from 'rxjs/operators';
-import { of, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 
 export interface AuthStateModel {
     token: string | null;
@@ -38,6 +38,19 @@ export class AuthState {
                 ctx.patchState({
                     token: result.token,
                     username: action.payload.username
+                });
+            }),
+            catchError(error => throwError(error)),
+        );
+    }
+
+    @Action(Authenticate)
+    loginWithToken(ctx: StateContext<AuthStateModel>) {
+        return this.authService.authenticate(ctx.getState().token).pipe(
+            tap((result: { token: string }) => {
+                ctx.patchState({
+                    token: result.token,
+                    username: ctx.getState().username
                 });
             }),
             catchError(error => throwError(error)),

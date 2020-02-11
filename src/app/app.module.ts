@@ -4,6 +4,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NgxsModule } from '@ngxs/store';
+import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AuthState } from './shared/state/auth.state';
 import { Logger } from './shared/state/logger';
@@ -30,6 +31,7 @@ export function emptyFn() {
         NativeScriptModule,
         AppRoutingModule,
         NgxsModule.forRoot([AuthState], { developmentMode: !isProduction }),
+        NgxsStoragePluginModule.forRoot({ storage: StorageOption.LocalStorage, key: 'auth' }),
         NgxsLoggerPluginModule.forRoot({ disabled: isProduction, logger: new Logger() }),
     ],
     declarations: [
