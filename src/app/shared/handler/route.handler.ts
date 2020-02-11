@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, ofActionDispatched, ofActionCompleted } from '@ngxs/store';
+import { Actions, ofActionDispatched, ofActionCompleted, ofActionErrored } from '@ngxs/store';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Logout, Login } from '../state/auth.actions';
@@ -22,6 +22,11 @@ export class RouteHandler {
         // Login
         this.actions.pipe(ofActionCompleted(Login)).subscribe(() => {
             navigateToContentPage(this.routerExtension, this.activeRoute)
+        });
+
+        // Login error
+        this.actions.pipe(ofActionErrored(Login)).subscribe(error => {
+            console.error('Login action finished with error ...', error);
         });
     }
 }

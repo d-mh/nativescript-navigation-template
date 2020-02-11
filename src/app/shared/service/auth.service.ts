@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,9 @@ export class AuthService {
 
       return of({ token: 'token here' });
     } else {
-      
-      return of({ token: null });
+
+      // throw Error('Wrong login credentials!');
+      return throwError('Wrong login credentials!');
     }
 
   }

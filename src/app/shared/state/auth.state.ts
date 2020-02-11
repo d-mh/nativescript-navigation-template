@@ -1,7 +1,8 @@
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { Login, Logout } from './auth.actions';
 import { AuthService } from '../service/auth.service';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
 
 export interface AuthStateModel {
     token: string | null;
@@ -38,7 +39,8 @@ export class AuthState {
                     token: result.token,
                     username: action.payload.username
                 });
-            })
+            }),
+            catchError(error => throwError(error)),
         );
     }
 
