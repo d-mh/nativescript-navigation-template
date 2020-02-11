@@ -41,6 +41,7 @@
     "@phenomnomnominal/angular-lazy-routes-fix": "^0.1.5",
     "nativescript-dev-webpack": "~1.4.0",
     "node-sass": "^4.13.1",
+    "tns-platform-declarations": "^6.3.2",
     "tslint": "^6.0.0",
     "typescript": "~3.5.3"
   },

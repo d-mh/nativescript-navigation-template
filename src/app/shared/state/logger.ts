@@ -1,11 +1,7 @@
 export class Logger {
 
-    constructor() {
-        console.log('init Logger class');
-    }
-
     log(title: string, color: string, payload: any) {
-        const greyStyle = 'color: #9E9E9E; font-weight: bold';
+        // const greyStyle = 'color: #9E9E9E; font-weight: bold';
         const greenStyle = 'color: #4CAF50; font-weight: bold';
         const redishStyle = 'color: #FD8182; font-weight: bold';
         let prefix;

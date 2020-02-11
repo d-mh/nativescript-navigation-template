@@ -13,17 +13,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private store: Store,
   ) { }
 
-  ngOnInit() {
-    console.log('[DashboardComponent] ngOnInit()');
-  }
+  ngOnInit() { }
 
-  ngOnDestroy(): void {
-    console.log('[DashboardComponent] ngOnDestroy()');
-  }
+  ngOnDestroy(): void { }
 
   logout() {
-    console.log('logout()')
-
     this.store.dispatch(new Logout());
   }
 

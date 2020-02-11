@@ -13,24 +13,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     private store: Store,
   ) { }
 
-  ngOnInit() {
-    console.log('[LoginComponent] ngOnInit()');
-  }
+  ngOnInit() { }
 
-  ngOnDestroy(): void {
-    console.log('[LoginComponent] ngOnDestroy()');
-  }
+  ngOnDestroy(): void { }
 
   login() {
-    console.log('login()');
-
     const payload: { username: string; password: string; } = { username: 'admin', password: 'password' };
     this.store.dispatch(new Login(payload));
   }
 
   loginWrongCreds() {
-    console.log('loginWrongCreds()');
-
     const payload: { username: string; password: string; } = { username: 'admin', password: 'wrongPassword' };
     this.store.dispatch(new Login(payload));
   }

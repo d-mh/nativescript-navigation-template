@@ -30,7 +30,7 @@ export function emptyFn() {
         NativeScriptModule,
         AppRoutingModule,
         NgxsModule.forRoot([AuthState], { developmentMode: !isProduction }),
-        NgxsLoggerPluginModule.forRoot({ disabled: isProduction, logger: new Logger() })
+        NgxsLoggerPluginModule.forRoot({ disabled: isProduction, logger: new Logger() }),
     ],
     declarations: [
         AppComponent,

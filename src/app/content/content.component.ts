@@ -15,14 +15,10 @@ export class ContentComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log('[ContentComponent] ngOnInit()');
-
     // navigate to default page
     this.routerExtension.navigate(['/app/content', { outlets: { contentRouterOutlet: ['dashboard'] } }], { relativeTo: this.activeRoute });
   }
 
-  ngOnDestroy(): void {
-    console.log('[ContentComponent] ngOnDestroy()');
-  }
+  ngOnDestroy(): void { }
 
 }

@@ -26,7 +26,7 @@ export class RouteHandler {
 
         // Login error
         this.actions.pipe(ofActionErrored(Login)).subscribe(error => {
-            console.error('Login action finished with error ...', error);
+            // console.error('Login action finished with error ...', error);
         });
     }
 }
