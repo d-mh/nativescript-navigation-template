@@ -179,7 +179,7 @@ module.exports = env => {
             "timers": false,
             "setImmediate": false,
             "fs": "empty",
-            "__dirname": false,
+            "__dirname": false
         },
         devtool: hiddenSourceMap ? "hidden-source-map" : (sourceMap ? "inline-source-map" : "none"),
         optimization: {
@@ -294,8 +294,7 @@ module.exports = env => {
             // Define useful constants like TNS_WEBPACK
             new webpack.DefinePlugin({
                 "global.TNS_WEBPACK": "true",
-                "process": "global.process",
-                "global.config.mode": JSON.stringify(production ? "production" : "development")
+                "global.process": JSON.stringify({ env: env })
             }),
             // Remove all files from the out dir.
             new CleanWebpackPlugin(itemsToClean, { verbose: !!verbose }),

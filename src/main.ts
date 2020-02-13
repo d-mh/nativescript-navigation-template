@@ -6,7 +6,10 @@ import { AppModule } from "./app/app.module";
 import { Storage } from './app/shared/state/storage';
 
 // register localStorage variable for NGXS Storage
-(<any>global).localStorage = new Storage();
+(global as any).localStorage = new Storage();
+
+// needed for rxjs websocket
+require('nativescript-websockets');
 
 // A traditional NativeScript application starts by initializing global objects,
 // setting up global CSS rules, creating, and navigating to the main page.
